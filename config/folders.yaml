@@ -1,0 +1,86 @@
+# Outlook Folder Configuration
+# Define which folders to extract emails from
+
+# Predefined Outlook folder constants
+# Reference: https://docs.microsoft.com/en-us/office/vba/api/outlook.oldefaultfolders
+default_folders:
+  inbox: 6              # olFolderInbox
+  sent_items: 5         # olFolderSentMail
+  drafts: 16           # olFolderDrafts
+  deleted_items: 3     # olFolderDeletedItems
+  outbox: 4            # olFolderOutbox
+  junk_email: 23       # olFolderJunk
+
+# Custom folder paths (relative to root mailbox)
+# Use forward slashes for folder separation
+custom_folders:
+  - "Personal/Important"
+  - "Work/Projects"
+  - "Archive/2024"
+  - "Clients/CustomerA"
+  - "Clients/CustomerB"
+
+# Folder extraction configuration
+extraction_config:
+  # Which default folders to include
+  include_default_folders:
+    - inbox
+    - sent_items
+    - drafts
+  
+  # Whether to include custom folders
+  include_custom_folders: true
+  
+  # Whether to search subfolders recursively
+  recursive_search: true
+  
+  # Maximum number of emails per folder (0 = no limit)
+  max_emails_per_folder: 1000
+  
+  # Date range filtering
+  date_filter:
+    enabled: false
+    start_date: "2024-01-01"  # YYYY-MM-DD format
+    end_date: "2024-12-31"    # YYYY-MM-DD format
+  
+  # Email size filtering
+  size_filter:
+    enabled: false
+    max_size_mb: 10  # Maximum email size in MB
+  
+  # Subject filtering
+  subject_filter:
+    enabled: false
+    include_patterns:
+      - "Important"
+      - "Urgent"
+    exclude_patterns:
+      - "SPAM"
+      - "Unsubscribe"
+  
+  # Sender filtering
+  sender_filter:
+    enabled: false
+    include_domains:
+      - "company.com"
+      - "client.com"
+    exclude_domains:
+      - "noreply.com"
+      - "spam.com"
+
+# Output configuration for different folder types
+output_settings:
+  # Separate CSV files for each folder
+  separate_files: false
+  
+  # Include folder name in filename
+  include_folder_in_filename: true
+  
+  # File naming pattern
+  filename_pattern: "outlook_emails_{folder}_{timestamp}"
+  
+  # Export formats
+  export_formats:
+    - csv
+    - json
+    # - parquet  # Uncomment if parquet support needed

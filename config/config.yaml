@@ -1,0 +1,18 @@
+outlook:
+  timeout: 30
+  default_folders: ["Inbox"]
+  max_emails_per_folder: null
+
+dataframe:
+  export_format: "csv"
+  include_html_body: false
+  clean_text: true
+
+llm:
+  max_emails_for_prompt: 100
+  include_body_text: true
+  max_body_length: 1000
+
+logging:
+  level: "INFO"
+  file: "logs/outlook2ai.log"
